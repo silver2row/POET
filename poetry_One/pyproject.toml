@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "Saber"
+version = "0.1.0"
+description = "A python driver library for Dimension Engineering's Sabertooth Motor Controllers"
+authors = ["Seth <seth@lafayette-parish.com>",
+           "walchko <walchko@users.noreply.github.com>"
+          ]
+readme = "README.md"
+license = "MIT"
+homepage = "http://github.com/MomsFriendlyRobotCompany/pysabertooth"
+repository = "http://github.com/MomsFriendlyRobotCompany/pysabertooth"
+packages = [{include = "poetry_one/PySabertooth.py"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pyserial = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
