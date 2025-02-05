@@ -3,24 +3,23 @@
 from pysabertooth import Sabertooth
 from flask import Flask, render_template
 
-import time
+from time import sleep
 
-# on the beaglebone related boards, use P9_21 for UART2 and set up config-pin.
+# on the beaglebone related boards, use a known, working UART port on the headers.
 
-# attach P9_21 to S1 on the sabertooth 2 x 12 and attach GND on the sabertooth to GND on your BBB.
+# For instance, attach P9_21 to S1 on the sabertooth 2 x 12 and attach GND on the sabertooth to GND on your BBB.
 # "/dev/ttyS2" has changed in time. Check for changes...
 
 saber = Sabertooth("/dev/ttyS2", baudrate=9600, address=128, timeout=0.1)
 
-# for instance, sudo config-pin P9.21 uart, that cmd will do it.
-
-# start and enable a service, start a cron job, or make an executable .sh file.
+# start and enable a service, start a cron job, or make an executable .sh file for use when booting into this file.
 
 app = Flask(__name__)
 @app.route("/")
 @app.route("/<state>")
 
 while True:
+    sleep(0.4)
     if state == "F":
         print ("Robot Moving Forward")
         saber.drive(1, 100)
